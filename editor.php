@@ -28,11 +28,11 @@ if (file_exists($filename)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/styles/main.css">
 
-    <title>Редактор файла</title>
+    <title>4you</title>
 </head>
 <body>
     <div class="container">
-        <h1>📝 Редактор файла</h1>
+        <h1>📝 Заметки</h1>
 
         <div class="filename">
             Файл: <?php echo htmlspecialchars($filename); ?>
@@ -52,7 +52,7 @@ if (file_exists($filename)) {
 
         <form method="POST" action="">
             <textarea name="content" placeholder="Введите текст здесь..."><?php
-echo htmlspecialchars($currentContent); ?>
+                echo htmlspecialchars($currentContent); ?>
             </textarea>
             <br>
             <button type="submit">💾 Сохранить</button>
