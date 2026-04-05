@@ -4,7 +4,7 @@ $filename = "content.txt";
 // Обработка отправки формы
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
     $content = $_POST['content'];
-    
+
     // Записываем содержимое в файл
     if (file_put_contents($filename, $content)) {
         $message = "✅ Файл успешно сохранен!";
@@ -35,19 +35,19 @@ if (file_exists($filename)) {
             padding: 20px;
             background-color: #f5f5f5;
         }
-        
+
         .container {
             background: white;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        
+
         h1 {
             color: #333;
             margin-top: 0;
         }
-        
+
         textarea {
             width: 100%;
             height: 300px;
@@ -58,7 +58,7 @@ if (file_exists($filename)) {
             border-radius: 5px;
             resize: vertical;
         }
-        
+
         button {
             background-color: #4CAF50;
             color: white;
@@ -69,11 +69,11 @@ if (file_exists($filename)) {
             font-size: 16px;
             margin-top: 10px;
         }
-        
+
         button:hover {
             background-color: #45a049;
         }
-        
+
         .message {
             padding: 10px;
             margin-bottom: 20px;
@@ -82,7 +82,7 @@ if (file_exists($filename)) {
             color: #2e7d32;
             border-left: 4px solid #4CAF50;
         }
-        
+
         .info {
             background-color: #e3f2fd;
             color: #1976d2;
@@ -91,7 +91,7 @@ if (file_exists($filename)) {
             padding: 10px;
             border-radius: 5px;
         }
-        
+
         .filename {
             background-color: #f0f0f0;
             padding: 5px 10px;
@@ -105,27 +105,27 @@ if (file_exists($filename)) {
 <body>
     <div class="container">
         <h1>📝 Редактор файла</h1>
-        
+
         <div class="filename">
             Файл: <?php echo htmlspecialchars($filename); ?>
         </div>
-        
+
         <?php if (isset($message)): ?>
             <div class="message">
                 <?php echo $message; ?>
             </div>
         <?php endif; ?>
-        
+
         <?php if (!file_exists($filename)): ?>
             <div class="info">
                 ℹ️ Файл еще не создан. Введите текст и нажмите "Сохранить", чтобы создать файл.
             </div>
         <?php endif; ?>
-        
+
         <form method="POST" action="">
-            <textarea name="content" placeholder="Введите текст здесь..."><?php 
-                echo htmlspecialchars($currentContent); 
-            ?></textarea>
+            <textarea name="content" placeholder="Введите текст здесь..."><?php
+                echo htmlspecialchars($currentContent); ?>
+            </textarea>
             <br>
             <button type="submit">💾 Сохранить</button>
         </form>
