@@ -1,6 +1,13 @@
 <?php
 $filename = "content.txt";
 
+// Читаем текущее содержимое файла (если файл существует)
+if (file_exists($filename)) {
+    $currentContent = file_get_contents($filename);
+} else {
+    $currentContent = "";
+}
+
 // Обработка отправки формы
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['content'])) {
@@ -16,13 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Обновление содержимого из файла
         $message = "🔄 Содержимое обновлено из файла!";
     }
-}
-
-// Читаем текущее содержимое файла (если файл существует)
-if (file_exists($filename)) {
-    $currentContent = file_get_contents($filename);
-} else {
-    $currentContent = "";
 }
 ?>
 
