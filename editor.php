@@ -24,6 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = "🔄 Содержимое обновлено из файла!";
     }
 }
+
+// Читаем текущее содержимое файла (если файл существует)
+if (file_exists($filename)) {
+    $currentContent = file_get_contents($filename);
+} else {
+    $currentContent = "";
+}
+
 ?>
 
 <!DOCTYPE html>
