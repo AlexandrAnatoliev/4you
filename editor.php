@@ -2,14 +2,19 @@
 $filename = "content.txt";
 
 // Обработка отправки формы
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['content'])) {
-    $content = $_POST['content'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['content'])) {
+        $content = $_POST['content'];
 
-    // Записываем содержимое в файл
-    if (file_put_contents($filename, $content)) {
-        $message = "✅ Файл успешно сохранен!";
-    } else {
-        $message = "❌ Ошибка при сохранении файла!";
+        // Записываем содержимое в файл
+        if (file_put_contents($filename, $content)) {
+            $message = "✅ Файл успешно сохранен!";
+        } else {
+            $message = "❌ Ошибка при сохранении файла!";
+        }
+    } elseif (isset($_POST['refresh'])) {
+        // Обновление содержимого из файла
+        $message = "🔄 Содержимое обновлено из файла!";
     }
 }
 
@@ -56,7 +61,8 @@ if (file_exists($filename)) {
             </textarea>
             <br>
             <button type="submit">💾 Сохранить</button>
+            <button type="submit" name="refresh" value="1">🔄 Обновить контент</button>
         </form>
     </div>
 </body>
-</html>
+</html> 
