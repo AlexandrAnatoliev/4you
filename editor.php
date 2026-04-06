@@ -1,4 +1,18 @@
 <?php
+/*
+ * Return file content
+ *
+ * @param string    $filename Path to file
+ * @return string   File content or empty string, if file does not exist
+ */
+function getFileContent($filename) {
+    if (file_exists($filename)) {
+        return file_get_contents($filename);
+    } else {
+        return "";
+    }
+}
+
 $filename = "content.txt";
 
 // Читаем текущее содержимое файла (если файл существует)
