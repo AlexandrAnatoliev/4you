@@ -57,7 +57,11 @@ $currentContent = getFileContent($filename);
         <h1>📝 Заметки</h1>
 
         <div class="filename">
-            Файл: <?php echo htmlspecialchars($filename); ?>
+            <?php date_default_timezone_set('Europe/Moscow'); ?>
+            Файл:  <?php echo htmlspecialchars($filename); ?><br>
+            <?php echo date('H:i:s'); ?>
+            <?php echo date('Y-m-d'); ?>
+            <?php echo date('l'); ?>
         </div>
 
         <?php if (isset($message)): ?>
