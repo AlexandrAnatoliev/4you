@@ -1,12 +1,20 @@
 <?php
-$filename = "content.txt";
-
-// Читаем текущее содержимое файла (если файл существует)
-if (file_exists($filename)) {
-    $currentContent = file_get_contents($filename);
-} else {
-    $currentContent = "";
+/*
+ * Return file content
+ *
+ * @param string    $filename Path to file
+ * @return string   File content or empty string, if file does not exist
+ */
+function getFileContent($filename) {
+    if (file_exists($filename)) {
+        return file_get_contents($filename);
+    } else {
+        return "";
+    }
 }
+
+$filename = "content.txt";
+$currentContent = getFileContent($filename);
 
 // Обработка отправки формы
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -23,23 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif (isset($_POST['refresh'])) {
         // Обновление содержимого из файла
+        $currentContent = getFileContent($filename);
         if (file_exists($filename)) {
-            $currentContent = file_get_contents($filename);
             $message = "🔄 Содержимое обновлено из файла!";
         } else {
-            $currentContent = "";
             $message = "❌ Файл еще не создан!";
         }
     }
 }
 
-// Читаем текущее содержимое файла (если файл существует)
-if (file_exists($filename)) {
-    $currentContent = file_get_contents($filename);
-} else {
-    $currentContent = "";
-}
-
+$currentContent = getFileContent($filename);
 ?>
 
 <!DOCTYPE html>
